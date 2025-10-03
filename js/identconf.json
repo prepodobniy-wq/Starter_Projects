@@ -1,0 +1,10 @@
+{
+  "indenticator.languageSpecific": {
+    "[json, jsonc]": {
+      
+    },
+    "[xml, html, xhtml]": {
+      
+    }
+  }
+}

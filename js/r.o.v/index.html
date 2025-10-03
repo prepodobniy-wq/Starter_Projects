@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Атомный профессионал</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            font-size: 18px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            background: url('img/fon.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 20px;
+            color: #555;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            width: 80%;
+            max-width: 1400px;
+            margin-bottom: 40px;
+        }
+
+        .dropzone {
+            flex: 1;
+            min-height: 250px;
+            border: 4px dashed #7d7474;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .dropzone h2 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .dropzone p {
+            font-size: 14px;
+            color: #666;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .dropzone img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .draggable {
+            font-size: 14px;
+            cursor: grab;
+            border: 2px solid #8cb3e7;
+            border-radius: 12px;
+            padding: 10px;
+            text-align: left;
+            margin: 5px;
+            background-color: #fff;
+            font-weight: 500;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+
+            flex: 0 1 calc(20% - 30px);
+            max-width: 400px;
+            min-width: 120px;
+            box-sizing: border-box;
+        }
+
+        .draggable:hover {
+            transform: scale(1.05);
+        }
+
+        .correct {
+            border-color: #4CAF50;
+        }
+
+        .incorrect {
+            border-color: #F44336;
+        }
+
+        .reset-icon {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 40px;
+            height: 40px;
+            background: url('img/grammarly.svg') no-repeat center center;
+            background-size: contain;
+            cursor: pointer;
+        }
+
+        @keyframes firework {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        .firework {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: yellow;
+            border-radius: 50%;
+            animation: firework 2s ease-out infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reset-icon" onclick="resetGame()"></div>
+    <h1>Атомный профессионал</h1>
+    <div class="subtitle">Соедини профессию с ее описанием.</div>
+    <div class="container">
+        <div class="dropzone" data-category="1">
+            <img src="img/1.jpg" alt="Радиолог">
+            <h2>Радиолог</h2>
+
+        </div>
+        <div class="dropzone" data-category="2">
+            <img src="img/2.jpg" alt="Капитан атомного ледокола">
+            <h2>Капитан атомного ледокола</h2>
+
+        </div>
+        <div class="dropzone" data-category="3">
+            <img src="img/3.jpg" alt="Эколог">
+            <h2>Эколог</h2>
+
+        </div>
+        <div class="dropzone" data-category="4">
+            <img src="img/4.jpg" alt="Физик-ядерщик">
+            <h2>Физик-ядерщик</h2>
+
+        </div>
+
+        <div class="dropzone" data-category="5">
+            <img src="img/5.jpg" alt="Инженер">
+            <h2>Инженер</h2>
+
+        </div>
+
+        <div class="dropzone" data-category="6">
+            <img src="img/6.jpg" alt="Дозиметрист">
+            <h2>Дозиметрист</h2>
+
+        </div>
+
+    </div>
+
+    <div id="draggable-container" class="container">
+        <div class="draggable" id="item1" draggable="true" data-category="1">
+            <p>Специалист (врач), который применяет радиоактивные изотопы и ионизирующее излучение для диагностики и
+                лечения различных заболеваний</p>
+        </div>
+        <div class="draggable" id="item2" draggable="true" data-category="2">
+            <p>Одна из редчайших профессий на планете. Обеспечивает проводки судов сквозь толщу льда в суровых
+                арктических условиях</p>
+        </div>
+        <div class="draggable" id="item3" draggable="true" data-category="3">
+            <p>Занимается разработкой и контролем исполнения экологических норм и правил на производстве. Его цель –
+                снижение негативного воздействия на окружающую среду и здоровье человека</p>
+        </div>
+        <div class="draggable" id="item4" draggable="true" data-category="4">
+            <p>Этот специалист занимается изучением свойств, структуры и взаимодействия атомных ядер, а также
+                процессами, при которых происходят превращения этих ядер</p>
+        </div>
+        <div class="draggable" id="item5" draggable="true" data-category="5">
+            <p>Ведет физические расчеты, исследования и эксперименты. Разрабатывает для атомной отрасли всевозможное
+                оборудование, приборы, энергетические установки и другие сложные системы</p>
+        </div>
+        <div class="draggable" id="item6" draggable="true" data-category="6">
+            <p>Следит за содержанием радиоизотопов в окружающем пространстве, контролирует дозы облучения персонала,
+                работающего с источниками ионизирующего излучения</p>
+        </div>
+    </div>
+
+    <audio id="success-sound" src="sound/right.mp3"></audio>
+    <audio id="matching-touch" src="sound/matching_touch.mp3"></audio>
+
+    <script>
+        const draggables = document.querySelectorAll('.draggable');
+        const dropzones = document.querySelectorAll('.dropzone');
+        const draggableContainer = document.getElementById('draggable-container');
+        const matchingSound = document.getElementById('matching-touch');
+        const successSound = document.getElementById('success-sound');
+
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragstart', e => {
+                e.dataTransfer.setData('text/plain', draggable.id);
+            });
+        });
+
+        dropzones.forEach(dropzone => {
+            dropzone.addEventListener('dragover', e => e.preventDefault());
+            dropzone.addEventListener('drop', e => {
+                e.preventDefault();
+                const id = e.dataTransfer.getData('text/plain');
+                const draggedElement = document.querySelector(`#${id}`);
+
+                if (draggedElement && draggedElement.dataset.category === dropzone.dataset.category) {
+                    dropzone.appendChild(draggedElement);
+                    draggedElement.style.borderColor = '#4CAF50';
+                    matchingSound.play();
+                    checkCompletion();
+                } else {
+                    draggedElement.style.borderColor = '#F44336';
+                }
+            });
+        });
+
+        function checkCompletion() {
+            const remainingDraggables = draggableContainer.querySelectorAll('.draggable');
+            if (remainingDraggables.length === 0) {
+                successSound.play();
+                launchFireworks();
+            }
+        }
+
+        function launchFireworks() {
+            const body = document.body;
+            const fireworkInterval = setInterval(() => {
+                for (let i = 0; i < 15; i++) {
+                    const firework = document.createElement('div');
+                    firework.className = 'firework';
+                    firework.style.left = Math.random() * window.innerWidth + 'px';
+                    firework.style.top = Math.random() * window.innerHeight / 2 + 'px';
+                    firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    body.appendChild(firework);
+                    setTimeout(() => firework.remove(), 2000);
+                }
+            }, 500); // Частота появления фейерверков
+
+            setTimeout(() => clearInterval(fireworkInterval), 3000); // Остановка через 3 секунды
+        }
+
+
+        function resetGame() {
+            draggables.forEach(draggable => {
+                draggable.style.borderColor = '#dedede';
+                draggableContainer.appendChild(draggable);
+            });
+            shuffleElements(draggableContainer);
+        }
+
+        function shuffleElements(container) {
+            const elements = Array.from(container.children);
+            for (let i = elements.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                container.appendChild(elements[j]);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            shuffleElements(draggableContainer);
+        });
+    </script>
+</body>
+
+</html>
