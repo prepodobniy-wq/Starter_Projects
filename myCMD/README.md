@@ -1,19 +1,13 @@
-# 🚀 nextgen-bash
-
-**Innovative Extensible Bash Console with AI Power**
-
-A next-generation bash-like terminal emulator written in Python with modern features, multiple language support, and extensibility.
-
-## ✨ Features
+# myCMD (**under construction**)
 
 ### Core Features
-- ✅ Bash-compatible commands:  `ls`, `cd`, `pwd`, `cat`, `grep`, `find`, `touch`, `mkdir`, `rm`
-- ✅ Pipes and operators: `|`, `&&`, `||`
-- ✅ Command history with navigation (↑ ↓)
-- ✅ Tab autocomplete
-- ✅ Session management (save/load)
+ - Bash-compatible commands:  `ls`, `cd`, `pwd`, `cat`, `grep`, `find`, `touch`, `mkdir`, `rm`
+-  Pipes and operators: `|`, `&&`, `||`
+-  Command history with navigation (↑ ↓)
+-  Tab autocomplete
+-  Session management (save/load)
 
-### 🌍 Multi-Language Support
+### 🌍 Multi-Language Support (NOT WORKING!)
 - 🇬🇧 English
 - 🇷🇺 Русский (Russian)
 - 🇪🇸 Español (Spanish)
@@ -22,7 +16,7 @@ A next-generation bash-like terminal emulator written in Python with modern feat
 - 🇨🇳 中文 (Chinese)
 - 🇯🇵 日本語 (Japanese)
 
-### 🧠 AI-Powered Commands
+### 🧠 AI-Powered Commands (TEST)
 - `ai help <command>` - Explain what a command does
 - `ai fix` - Fix the last error
 - `ai explain` - Explain last command
@@ -41,7 +35,7 @@ A next-generation bash-like terminal emulator written in Python with modern feat
 - `dryrun <cmd>` - Show what command would do
 - `trace <cmd>` - Step-by-step execution
 
-### 🎨 ASCII Art & Themes
+### 🎨 ASCII Art & Themes (TEST)
 - `theme list` - List available themes
 - `theme set <name>` - Change theme
 - `ascii banner` - Display banner
@@ -76,11 +70,12 @@ A next-generation bash-like terminal emulator written in Python with modern feat
 
 ```bash
 # Clone or download the project
-git clone https://github.com/yourusername/nextgen-bash. git
-cd nextgen-bash
+git clone https://github.com/prepodobniy-wq/myCMD. git
+cd myCMD
 
 # Install dependencies
 pip install -r requirements.txt
 
 # Run
+
 python main.py
